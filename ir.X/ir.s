@@ -19,17 +19,24 @@ start:
     goto main_loop
 
 initialisation:
-    movlb 01h			;Go to bank 1
-    ;clrf TRISC
-    ;movlw 00010000B		;Set the port pin types of RC
-    ;movwf TRISC			;RC4 is input
+    movlb 01h			    ;Go to bank 1
+    clrf TRISC
+    movlw 00010000B		    ;Set the port pin types of RC
+    movwf TRISC			    ;RC4 is input
     
-    clrf TRISD			;All pins of PORTD are output
-    movlw 00000010B		;RD1 is input. Others are output.
-    movwf TRISD			;RD1 is input
+    clrf TRISD			    ;All pins of PORTD are output
+    movlw 00000010B		    ;RD1 is input. Others are output.
+    movwf TRISD			    ;RD1 is input
     
-    movlb 02h			;Clear output of all PORTD
+    movlb 02h			    ;Clear output of all PORTD
     clrf LATD
+
+    movlb 07h               ;Go to bank 7
+    movlw 00010000B         
+    movwf INLVLC            ;Set up schmitt trigger with CMOS levels for RC4
+
+    movlw 00000010B
+    movwf INLVLD            ;Set up schmitt trigger with CMOS levels for RD1
     
     ; configure the clock
     movlb 01h
@@ -42,24 +49,20 @@ initialisation:
 
 main_loop:
     movlb 00h
-    ;btfss PORTC, 4	    ;Read RC4 pin
-    ;goto button_is_off	    ;If RC4 is '0', then go to no_pass_detected
-    btfss PORTD, 1	    ;Read RD1 pin
-    goto no_pass_detected   ;If RD1 is '0', then go to no_pass_detected
-    goto pass_detected
-    ;btfsc PORTD, 1
-    ;goto pass_detected	    ;If RD1 is '1', then go to no_pass_detected
-    ;goto main_loop
+    btfss PORTC, 4	            ;Read RC4 pin
+    goto no_pass_detected	    ;If RC4 is '0', then go to no_pass_detected
+    goto pass_detected          ;Else go to pass_detected
+    btfss PORTD, 1	            ;Read RD1 pin
+    goto no_pass_detected       ;If RD1 is '0', then go to no_pass_detected
+    goto pass_detected          ;Else go to pass_detected
 
 pass_detected:
-    movlb 02h
-    movlw   00000000B	    ;Set RD7 output
-    movwf LATD
-    goto main_loop	    ;Go back to the main loop
+    movlb 00h
+    bsf PORTD, 7		        ;Set RD7 output
+    goto main_loop              ;Go back to the main loop
 
 no_pass_detected:
-    movlb 02h
-    movlw   10000000B		    ;Clear RD7 output
-    movwf LATD
-    goto main_loop	    ;Go back to the main loop
+    movlb 00h
+    bcf PORTD, 7		        ;Clear RD7 output
+    goto main_loop              ;Go back to the main loop
 	
