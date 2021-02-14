@@ -28,8 +28,8 @@ initialisation:
     movlw 00000010B		    ;RD1 is input. Others are output.
     movwf TRISD			    ;RD1 is input
     
-    movlb 02h			    ;Clear output of all PORTD
-    clrf LATD
+    movlb 02h			    
+    clrf LATD               ;Clear output of all PORTD
 
     movlb 07h               ;Go to bank 7
     movlw 00010000B         
@@ -57,12 +57,14 @@ main_loop:
     goto pass_detected          ;Else go to pass_detected
 
 pass_detected:
-    movlb 00h
-    bsf PORTD, 7		        ;Set RD7 output
-    goto main_loop              ;Go back to the main loop
+    movlb 02h
+    movlw 10000000B	            ;Set RD7 output
+    movwf LATD
+    goto main_loop	            ;Go back to the main loop
 
 no_pass_detected:
-    movlb 00h
-    bcf PORTD, 7		        ;Clear RD7 output
-    goto main_loop              ;Go back to the main loop
+    movlb 02h
+    movlw 00000000B		        ;Clear RD7 output
+    movwf LATD
+    goto main_loop	            ;Go back to the main loop
 	
