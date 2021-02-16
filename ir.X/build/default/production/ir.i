@@ -10335,16 +10335,27 @@ start:
 
 initialisation:
     movlb 01h ;Go to bank 1
-    ;clrf TRISC
-    ;movlw 00010000B ;Set the port pin types of RC
-    ;movwf TRISC ;((PORTC) and 07Fh), 4 is input
+    clrf TRISC
+    movlw 00010000B ;Set the port pin types of RC
+    movwf TRISC ;((PORTC) and 07Fh), 4 is input
 
     clrf TRISD ;All pins of PORTD are output
     movlw 00000010B ;((PORTD) and 07Fh), 1 is input. Others are output.
     movwf TRISD ;((PORTD) and 07Fh), 1 is input
 
-    movlb 02h ;Clear output of all PORTD
-    clrf LATD
+    movlb 02h
+    clrf LATD ;Clear output of all PORTD
+
+    movlb 07h ;Go to bank 7
+    movlw 00010000B
+    movwf INLVLC ;Set up schmitt trigger with CMOS levels for ((PORTC) and 07Fh), 4
+
+    movlw 00000010B
+    movwf INLVLD ;Set up schmitt trigger with CMOS levels for ((PORTD) and 07Fh), 1
+
+    movlb 03h
+    movlw 00000000B
+    movwf ANSELD
 
     ; configure the clock
     movlb 01h
@@ -10358,13 +10369,12 @@ initialisation:
 main_loop:
     movlb 00h
     ;btfss PORTC, 4 ;Read ((PORTC) and 07Fh), 4 pin
-    ;goto button_is_off ;If ((PORTC) and 07Fh), 4 is '0', then go to no_pass_detected
+    ;goto no_pass_detected ;If ((PORTC) and 07Fh), 4 is '0', then go to no_pass_detected
+    ;goto pass_detected ;Else go to pass_detected
+    movlb 00h
     btfss PORTD, 1 ;Read ((PORTD) and 07Fh), 1 pin
     goto no_pass_detected ;If ((PORTD) and 07Fh), 1 is '0', then go to no_pass_detected
-    goto pass_detected
-    ;btfsc PORTD, 1
-    ;goto pass_detected ;If ((PORTD) and 07Fh), 1 is '1', then go to no_pass_detected
-    ;goto main_loop
+    goto pass_detected ;Else go to pass_detected
 
 pass_detected:
     movlb 02h

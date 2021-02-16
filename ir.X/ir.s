@@ -29,14 +29,18 @@ initialisation:
     movwf TRISD			    ;RD1 is input
     
     movlb 02h			    
-    clrf LATD               ;Clear output of all PORTD
+    clrf LATD			    ;Clear output of all PORTD
 
-    movlb 07h               ;Go to bank 7
+    movlb 07h			    ;Go to bank 7
     movlw 00010000B         
-    movwf INLVLC            ;Set up schmitt trigger with CMOS levels for RC4
+    movwf INLVLC		    ;Set up schmitt trigger with CMOS levels for RC4
 
     movlw 00000010B
-    movwf INLVLD            ;Set up schmitt trigger with CMOS levels for RD1
+    movwf INLVLD		    ;Set up schmitt trigger with CMOS levels for RD1
+    
+    movlb 03h
+    movlw 00000000B
+    movwf ANSELD
     
     ; configure the clock
     movlb 01h
@@ -49,12 +53,13 @@ initialisation:
 
 main_loop:
     movlb 00h
-    btfss PORTC, 4	            ;Read RC4 pin
-    goto no_pass_detected	    ;If RC4 is '0', then go to no_pass_detected
-    goto pass_detected          ;Else go to pass_detected
+    ;btfss PORTC, 4	            ;Read RC4 pin
+    ;goto no_pass_detected	    ;If RC4 is '0', then go to no_pass_detected
+    ;goto pass_detected		    ;Else go to pass_detected
+    movlb 00h
     btfss PORTD, 1	            ;Read RD1 pin
-    goto no_pass_detected       ;If RD1 is '0', then go to no_pass_detected
-    goto pass_detected          ;Else go to pass_detected
+    goto no_pass_detected	    ;If RD1 is '0', then go to no_pass_detected
+    goto pass_detected		    ;Else go to pass_detected
 
 pass_detected:
     movlb 02h
@@ -64,7 +69,7 @@ pass_detected:
 
 no_pass_detected:
     movlb 02h
-    movlw 00000000B		        ;Clear RD7 output
+    movlw 00000000B		    ;Clear RD7 output
     movwf LATD
     goto main_loop	            ;Go back to the main loop
 	
