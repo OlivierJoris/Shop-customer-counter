@@ -12,7 +12,7 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $build/default/production/ir.o
-text CODE 0 0 0 1B 2
+text CODE 0 0 0 27 2
 config CONFIG 4 8007 8007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -56,8 +56,8 @@ BANK6 320-36F 1
 BANK7 3A0-3EF 1
 BANK8 420-46F 1
 BANK9 4A0-4EF 1
-CONST 1B-3FFF 2
-ENTRY 1B-3FFF 2
+CONST 27-3FFF 2
+ENTRY 27-3FFF 2
 IDLOC 8000-8003 2
 SFR10 500-51F 1
 SFR11 580-59F 1
@@ -81,7 +81,7 @@ SFR28 E00-E6F 1
 SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
-CODE 1B-3FFF 2
+CODE 27-3FFF 2
 SFR1 80-9F 1
 SFR2 100-11F 1
 SFR3 180-19F 1
@@ -110,8 +110,8 @@ BANK25 CA0-CBF 1
 BIGRAM 2000-27EF 1
 COMMON 70-7F 1
 EEDATA F000-F0FF 2
-STRCODE 1B-3FFF 2
-STRING 1B-3FFF 2
+STRCODE 27-3FFF 2
+STRING 27-3FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -126,39 +126,51 @@ STRING 1B-3FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $build/default/production/ir.o
-0 text CODE >14:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-0 text CODE >15:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-1 text CODE >17:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-1 text CODE >18:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-2 text CODE >19:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-3 text CODE >21:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-3 text CODE >22:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-4 text CODE >27:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-5 text CODE >28:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-6 text CODE >29:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-7 text CODE >31:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-8 text CODE >32:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-9 text CODE >35:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-A text CODE >36:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-B text CODE >37:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-C text CODE >38:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-D text CODE >39:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-E text CODE >41:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-F text CODE >43:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-F text CODE >44:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-10 text CODE >47:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-11 text CODE >48:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-12 text CODE >49:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-13 text CODE >54:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-13 text CODE >55:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-14 text CODE >56:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-15 text CODE >57:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-16 text CODE >58:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-17 text CODE >60:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-17 text CODE >61:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-18 text CODE >62:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-19 text CODE >63:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
-1A text CODE >64:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuators/ir.X/ir.s
+0 text CODE >14:/Users/maxime/Desktop/ir.X/ir.s
+0 text CODE >15:/Users/maxime/Desktop/ir.X/ir.s
+1 text CODE >17:/Users/maxime/Desktop/ir.X/ir.s
+1 text CODE >18:/Users/maxime/Desktop/ir.X/ir.s
+2 text CODE >19:/Users/maxime/Desktop/ir.X/ir.s
+3 text CODE >21:/Users/maxime/Desktop/ir.X/ir.s
+3 text CODE >22:/Users/maxime/Desktop/ir.X/ir.s
+4 text CODE >23:/Users/maxime/Desktop/ir.X/ir.s
+5 text CODE >24:/Users/maxime/Desktop/ir.X/ir.s
+6 text CODE >25:/Users/maxime/Desktop/ir.X/ir.s
+7 text CODE >27:/Users/maxime/Desktop/ir.X/ir.s
+8 text CODE >28:/Users/maxime/Desktop/ir.X/ir.s
+9 text CODE >29:/Users/maxime/Desktop/ir.X/ir.s
+A text CODE >31:/Users/maxime/Desktop/ir.X/ir.s
+B text CODE >32:/Users/maxime/Desktop/ir.X/ir.s
+C text CODE >34:/Users/maxime/Desktop/ir.X/ir.s
+D text CODE >35:/Users/maxime/Desktop/ir.X/ir.s
+E text CODE >36:/Users/maxime/Desktop/ir.X/ir.s
+F text CODE >38:/Users/maxime/Desktop/ir.X/ir.s
+10 text CODE >39:/Users/maxime/Desktop/ir.X/ir.s
+11 text CODE >41:/Users/maxime/Desktop/ir.X/ir.s
+12 text CODE >42:/Users/maxime/Desktop/ir.X/ir.s
+13 text CODE >43:/Users/maxime/Desktop/ir.X/ir.s
+14 text CODE >46:/Users/maxime/Desktop/ir.X/ir.s
+15 text CODE >47:/Users/maxime/Desktop/ir.X/ir.s
+16 text CODE >48:/Users/maxime/Desktop/ir.X/ir.s
+17 text CODE >49:/Users/maxime/Desktop/ir.X/ir.s
+18 text CODE >50:/Users/maxime/Desktop/ir.X/ir.s
+19 text CODE >52:/Users/maxime/Desktop/ir.X/ir.s
+1A text CODE >54:/Users/maxime/Desktop/ir.X/ir.s
+1A text CODE >55:/Users/maxime/Desktop/ir.X/ir.s
+1B text CODE >59:/Users/maxime/Desktop/ir.X/ir.s
+1C text CODE >60:/Users/maxime/Desktop/ir.X/ir.s
+1D text CODE >61:/Users/maxime/Desktop/ir.X/ir.s
+1E text CODE >62:/Users/maxime/Desktop/ir.X/ir.s
+1F text CODE >64:/Users/maxime/Desktop/ir.X/ir.s
+1F text CODE >65:/Users/maxime/Desktop/ir.X/ir.s
+20 text CODE >66:/Users/maxime/Desktop/ir.X/ir.s
+21 text CODE >67:/Users/maxime/Desktop/ir.X/ir.s
+22 text CODE >68:/Users/maxime/Desktop/ir.X/ir.s
+23 text CODE >70:/Users/maxime/Desktop/ir.X/ir.s
+23 text CODE >71:/Users/maxime/Desktop/ir.X/ir.s
+24 text CODE >72:/Users/maxime/Desktop/ir.X/ir.s
+25 text CODE >73:/Users/maxime/Desktop/ir.X/ir.s
+26 text CODE >74:/Users/maxime/Desktop/ir.X/ir.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -171,7 +183,7 @@ F text CODE >44:/Users/maxime/Documents/bac3/info-2055-em-project/sensors_actuat
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-__Hspace_0 1B 0 ABS 0 - -
+__Hspace_0 27 0 ABS 0 - -
 __Hspace_1 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 10010 0 ABS 0 - -
