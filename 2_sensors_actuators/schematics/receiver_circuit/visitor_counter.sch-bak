@@ -1,0 +1,717 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Visitor counter receiver"
+Date "2021-02-04"
+Rev "2"
+Comp ""
+Comment1 ""
+Comment2 "JORIS Olivier"
+Comment3 "GOFFART Maxime"
+Comment4 "CRUCIFIX Arnaud"
+$EndDescr
+$Comp
+L Connector:Jack-DC RAPC722X
+U 1 1 5FC4D66D
+P 1950 1850
+F 0 "RAPC722X" H 2007 2175 50  0000 C CNN
+F 1 "5V" H 2007 2084 50  0000 C CNN
+F 2 "" H 2000 1810 50  0001 C CNN
+F 3 "~" H 2000 1810 50  0001 C CNN
+	1    1950 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 5FC5EAEF
+P 3100 1900
+F 0 "C1" H 3215 1946 50  0000 L CNN
+F 1 "100nF" H 3215 1855 50  0000 L CNN
+F 2 "" H 3138 1750 50  0001 C CNN
+F 3 "~" H 3100 1900 50  0001 C CNN
+	1    3100 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push B1
+U 1 1 5FD45D23
+P 3600 4750
+F 0 "B1" V 3646 4702 50  0000 R CNN
+F 1 "Reset" V 3555 4702 50  0000 R CNN
+F 2 "" H 3600 4950 50  0001 C CNN
+F 3 "~" H 3600 4950 50  0001 C CNN
+	1    3600 4750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Interface_Optical:TSOP21xx IR1
+U 1 1 5FD7495C
+P 4800 3450
+F 0 "IR1" H 4333 3408 50  0000 R CNN
+F 1 "TSOP2138" H 4333 3499 50  0000 R CNN
+F 2 "OptoDevice:Vishay_MOLD-3Pin" H 4750 3075 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/82460/tsop45.pdf" H 5450 3750 50  0001 C CNN
+	1    4800 3450
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	8000 4800 8000 4750
+$Comp
+L Device:R_Small_US R8
+U 1 1 5FD5E972
+P 8000 4650
+F 0 "R8" V 7954 4718 50  0000 L CNN
+F 1 "220" V 8045 4718 50  0000 L CNN
+F 2 "" V 8000 4650 50  0001 C CNN
+F 3 "~" V 8000 4650 50  0001 C CNN
+	1    8000 4650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED D1
+U 1 1 5FD57178
+P 8000 4950
+F 0 "D1" V 8039 4832 50  0000 R CNN
+F 1 "HLMP-C515" V 7948 4832 50  0000 R CNN
+F 2 "" H 8000 4950 50  0001 C CNN
+F 3 "~" H 8000 4950 50  0001 C CNN
+	1    8000 4950
+	0    -1   -1   0   
+$EndComp
+Connection ~ 7350 5250
+Wire Wire Line
+	7800 2950 7850 2950
+$Comp
+L Display_Character:HDSP-7503 U2
+U 1 1 5FC9CFD6
+P 8450 2650
+F 0 "U2" H 8450 3317 50  0000 C CNN
+F 1 "LS0565SRWK" H 8450 3226 50  0000 C CNN
+F 2 "Display_7Segment:HDSP-A151" H 8450 2100 50  0001 C CNN
+F 3 "https://docs.broadcom.com/docs/AV02-2553EN" H 8050 3200 50  0001 C CNN
+	1    8450 2650
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7350 5250 7350 4950
+Wire Wire Line
+	7100 5250 7100 4950
+Wire Wire Line
+	7350 1750 7350 2150
+Wire Wire Line
+	7100 1750 7350 1750
+Wire Wire Line
+	7100 1750 7100 2150
+$Comp
+L eec:PIC16F1789-I_P U
+U 1 1 5FC12645
+P 6600 2350
+F 0 "U" H 7200 2523 50  0001 C CNN
+F 1 "PIC16F1789-I_P" H 7200 2524 50  0001 C BNN
+F 2 "Microchip-PIC16F1789-I_P-*" H 6600 2750 50  0001 L CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/41675A.pdf" H 6600 2850 50  0001 L CNN
+F 4 "Manufacturer URL" H 6600 2950 50  0001 L CNN "Component Link 1 Description"
+F 5 "http://www.microchip.com/" H 6600 3050 50  0001 L CNN "Component Link 1 URL"
+F 6 "Package Specification" H 6600 3150 50  0001 L CNN "Component Link 3 Description"
+F 7 "http://www.microchip.com/stellent/groups/techpub_sg/documents/packagingspec/en012702.pdf" H 6600 3250 50  0001 L CNN "Component Link 3 URL"
+F 8 "2.3 to 5.5 V" H 6600 3850 50  0001 L CNN "VCC Range"
+F 9 "Rev. A" H 6600 2350 50  0001 C CNN "Datasheet Version"
+F 10 "Through Hole" H 6600 2350 50  0001 C CNN "Mounting Technology"
+F 11 "40-Lead Plastic Dual In-Line Package, Body 51.75 x 13.53 mm, Pitch 2.54 mm" H 6600 2350 50  0001 C CNN "Package Description"
+F 12 "C04-016B, 04/2013" H 6600 2350 50  0001 C CNN "Package Version"
+F 13 "Tube" H 6600 2350 50  0001 C CNN "Packing"
+F 14 "IC" H 6600 2350 50  0001 C CNN "category"
+F 15 "10490062" H 6600 2350 50  0001 C CNN "ciiva ids"
+F 16 "yes" H 6600 2350 50  0001 C CNN "imported"
+F 17 "14c9a75bf827425d" H 6600 2350 50  0001 C CNN "library id"
+F 18 "Microchip" H 6600 2350 50  0001 C CNN "manufacturer"
+F 19 "PDIP-P40" H 6600 2350 50  0001 C CNN "package"
+F 20 "1396429688" H 6600 2350 50  0001 C CNN "release date"
+F 21 "87B779B8-BAE6-4182-B993-E708CD3A73B9" H 6600 2350 50  0001 C CNN "vault revision"
+	1    6600 2350
+	1    0    0    -1  
+$EndComp
+Connection ~ 7100 1750
+$Comp
+L Device:R_Small_US R5
+U 1 1 5FDB725F
+P 5400 2250
+F 0 "R5" V 5354 2318 50  0000 L CNN
+F 1 "100" V 5445 2318 50  0000 L CNN
+F 2 "" V 5400 2250 50  0001 C CNN
+F 3 "~" V 5400 2250 50  0001 C CNN
+	1    5400 2250
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small_US R1
+U 1 1 5FF5991A
+P 3600 4000
+F 0 "R1" V 3646 3932 50  0000 R CNN
+F 1 "10k" V 3555 3932 50  0000 R CNN
+F 2 "" V 3600 4000 50  0001 C CNN
+F 3 "~" V 3600 4000 50  0001 C CNN
+	1    3600 4000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_Push B3
+U 1 1 5FED2EA9
+P 4900 4750
+F 0 "B3" V 4946 4702 50  0000 R CNN
+F 1 "+" V 4855 4702 50  0000 R CNN
+F 2 "" H 4900 4950 50  0001 C CNN
+F 3 "~" H 4900 4950 50  0001 C CNN
+	1    4900 4750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_Push B2
+U 1 1 5FECD6BD
+P 4100 4750
+F 0 "B2" V 4146 4702 50  0000 R CNN
+F 1 "Digit selector" V 4055 4702 50  0000 R CNN
+F 2 "" H 4100 4950 50  0001 C CNN
+F 3 "~" H 4100 4950 50  0001 C CNN
+	1    4100 4750
+	0    -1   -1   0   
+$EndComp
+Connection ~ 7100 5250
+Wire Wire Line
+	6600 4450 6400 4450
+$Comp
+L Connector_Generic_MountingPin:Conn_01x06_MountingPin Header
+U 1 1 6011B099
+P 10050 2550
+F 0 "Header" H 10138 2464 50  0000 L CNN
+F 1 "22-28-4060" H 10138 2373 50  0000 L CNN
+F 2 "" H 10050 2550 50  0001 C CNN
+F 3 "~" H 10050 2550 50  0001 C CNN
+	1    10050 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R7
+U 1 1 6013FC2D
+P 9500 2000
+F 0 "R7" V 9454 2068 50  0000 L CNN
+F 1 "10k" V 9545 2068 50  0000 L CNN
+F 2 "" V 9500 2000 50  0001 C CNN
+F 3 "~" V 9500 2000 50  0001 C CNN
+	1    9500 2000
+	0    1    1    0   
+$EndComp
+Connection ~ 7350 1750
+Wire Wire Line
+	9850 2450 9750 2450
+Wire Wire Line
+	9750 2450 9750 1750
+Wire Wire Line
+	9500 1900 9500 1750
+Connection ~ 9500 1750
+Wire Wire Line
+	9500 1750 9750 1750
+Text GLabel 6400 4550 3    50   Input ~ 0
+MCLR
+Wire Wire Line
+	6400 4550 6400 4450
+Wire Wire Line
+	9850 2350 9500 2350
+Wire Wire Line
+	9500 2100 9500 2350
+Connection ~ 9500 2350
+Wire Wire Line
+	9500 2350 9350 2350
+Text GLabel 9350 2350 0    50   Input ~ 0
+MCLR
+$Comp
+L Display_Character:HDSP-7503 U1
+U 1 1 5FC61E6A
+P 6000 2650
+F 0 "U1" H 6000 3317 50  0000 C CNN
+F 1 "LS0565SRWK" H 6000 3226 50  0000 C CNN
+F 2 "Display_7Segment:HDSP-A151" H 6000 2100 50  0001 C CNN
+F 3 "https://docs.broadcom.com/docs/AV02-2553EN" H 5600 3200 50  0001 C CNN
+	1    6000 2650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9650 2650 9850 2650
+Wire Wire Line
+	7800 3050 7800 3250
+Wire Wire Line
+	7850 3200 7850 2950
+Wire Wire Line
+	7850 3200 9400 3200
+Wire Wire Line
+	9400 3200 9400 2750
+Wire Wire Line
+	9400 2750 9850 2750
+Wire Wire Line
+	9650 2650 9650 3250
+Wire Wire Line
+	7800 3250 9650 3250
+Wire Wire Line
+	7350 5250 8000 5250
+Wire Wire Line
+	7800 4450 8000 4450
+Wire Wire Line
+	8000 4450 8000 4550
+Wire Wire Line
+	8000 5100 8000 5250
+Connection ~ 8000 5250
+Text Label 7150 3350 3    50   ~ 0
+MCU1
+Text Label 7250 3150 3    50   ~ 0
+PIC16F1789-I-P
+Wire Wire Line
+	8000 5250 8750 5250
+$Comp
+L Device:R_Small_US R?
+U 1 1 60210ABE
+P 8000 2350
+F 0 "R?" H 8000 2555 50  0001 C CNN
+F 1 "R_Small_US" H 8000 2464 50  0001 C CNN
+F 2 "" V 8000 2350 50  0001 C CNN
+F 3 "~" V 8000 2350 50  0001 C CNN
+	1    8000 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 60218FEF
+P 8000 2450
+F 0 "R?" H 8000 2655 50  0001 C CNN
+F 1 "R_Small_US" H 8000 2564 50  0001 C CNN
+F 2 "" V 8000 2450 50  0001 C CNN
+F 3 "~" V 8000 2450 50  0001 C CNN
+	1    8000 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 6021AF56
+P 8000 2550
+F 0 "R?" H 8000 2755 50  0001 C CNN
+F 1 "R_Small_US" H 8000 2664 50  0001 C CNN
+F 2 "" V 8000 2550 50  0001 C CNN
+F 3 "~" V 8000 2550 50  0001 C CNN
+	1    8000 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 6021CDAC
+P 8000 2650
+F 0 "R?" H 8000 2855 50  0001 C CNN
+F 1 "R_Small_US" H 8000 2764 50  0001 C CNN
+F 2 "" V 8000 2650 50  0001 C CNN
+F 3 "~" V 8000 2650 50  0001 C CNN
+	1    8000 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 6021E8A5
+P 8000 2750
+F 0 "R?" H 8000 2955 50  0001 C CNN
+F 1 "R_Small_US" H 8000 2864 50  0001 C CNN
+F 2 "" V 8000 2750 50  0001 C CNN
+F 3 "~" V 8000 2750 50  0001 C CNN
+	1    8000 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 602203F2
+P 8000 2850
+F 0 "R?" H 8000 3055 50  0001 C CNN
+F 1 "R_Small_US" H 8000 2964 50  0001 C CNN
+F 2 "" V 8000 2850 50  0001 C CNN
+F 3 "~" V 8000 2850 50  0001 C CNN
+	1    8000 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 6022232F
+P 8000 2950
+F 0 "R?" H 8000 3155 50  0001 C CNN
+F 1 "R_Small_US" H 8000 3064 50  0001 C CNN
+F 2 "" V 8000 2950 50  0001 C CNN
+F 3 "~" V 8000 2950 50  0001 C CNN
+	1    8000 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 2350 7800 2350
+Wire Wire Line
+	7800 2450 7900 2450
+Wire Wire Line
+	7800 2550 7900 2550
+Wire Wire Line
+	7800 2650 7900 2650
+Wire Wire Line
+	7800 2750 7900 2750
+Wire Wire Line
+	7800 2850 7900 2850
+Wire Wire Line
+	8100 2350 8150 2350
+Wire Wire Line
+	8100 2450 8150 2450
+Wire Wire Line
+	8100 2550 8150 2550
+Wire Wire Line
+	8100 2650 8150 2650
+Wire Wire Line
+	8100 2750 8150 2750
+Wire Wire Line
+	8100 2950 8150 2950
+Wire Wire Line
+	7850 2950 7900 2950
+Connection ~ 7850 2950
+Wire Wire Line
+	8750 2950 8750 3050
+Connection ~ 8750 3050
+$Comp
+L Device:R_Small_US R?
+U 1 1 602669CB
+P 6450 2350
+F 0 "R?" H 6450 2555 50  0001 C CNN
+F 1 "R_Small_US" H 6450 2464 50  0001 C CNN
+F 2 "" V 6450 2350 50  0001 C CNN
+F 3 "~" V 6450 2350 50  0001 C CNN
+	1    6450 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 6026DE10
+P 6450 2450
+F 0 "R?" H 6450 2655 50  0001 C CNN
+F 1 "R_Small_US" H 6450 2564 50  0001 C CNN
+F 2 "" V 6450 2450 50  0001 C CNN
+F 3 "~" V 6450 2450 50  0001 C CNN
+	1    6450 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 60270225
+P 6450 2550
+F 0 "R?" H 6450 2755 50  0001 C CNN
+F 1 "R_Small_US" H 6450 2664 50  0001 C CNN
+F 2 "" V 6450 2550 50  0001 C CNN
+F 3 "~" V 6450 2550 50  0001 C CNN
+	1    6450 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 602727B4
+P 6450 2650
+F 0 "R?" H 6450 2855 50  0001 C CNN
+F 1 "R_Small_US" H 6450 2764 50  0001 C CNN
+F 2 "" V 6450 2650 50  0001 C CNN
+F 3 "~" V 6450 2650 50  0001 C CNN
+	1    6450 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 60274C86
+P 6450 2750
+F 0 "R?" H 6450 2955 50  0001 C CNN
+F 1 "R_Small_US" H 6450 2864 50  0001 C CNN
+F 2 "" V 6450 2750 50  0001 C CNN
+F 3 "~" V 6450 2750 50  0001 C CNN
+	1    6450 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 60277047
+P 6450 2850
+F 0 "R?" H 6450 3055 50  0001 C CNN
+F 1 "R_Small_US" H 6450 2964 50  0001 C CNN
+F 2 "" V 6450 2850 50  0001 C CNN
+F 3 "~" V 6450 2850 50  0001 C CNN
+	1    6450 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 602794B0
+P 6450 2950
+F 0 "R?" H 6450 3155 50  0001 C CNN
+F 1 "R_Small_US" H 6450 3064 50  0001 C CNN
+F 2 "" V 6450 2950 50  0001 C CNN
+F 3 "~" V 6450 2950 50  0001 C CNN
+	1    6450 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R?
+U 1 1 6027B808
+P 6450 3050
+F 0 "R?" H 6450 3255 50  0001 C CNN
+F 1 "R_Small_US" H 6450 3164 50  0001 C CNN
+F 2 "" V 6450 3050 50  0001 C CNN
+F 3 "~" V 6450 3050 50  0001 C CNN
+	1    6450 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 2350 6350 2350
+Wire Wire Line
+	6550 2350 6600 2350
+Wire Wire Line
+	6550 2450 6600 2450
+Wire Wire Line
+	6550 2550 6600 2550
+Wire Wire Line
+	6550 2650 6600 2650
+Wire Wire Line
+	6550 2750 6600 2750
+Wire Wire Line
+	6550 2850 6600 2850
+Wire Wire Line
+	6550 2950 6600 2950
+Wire Wire Line
+	6550 3050 6600 3050
+Wire Wire Line
+	6300 3050 6350 3050
+Wire Wire Line
+	6300 2950 6350 2950
+Wire Wire Line
+	6300 2850 6350 2850
+Wire Wire Line
+	6300 2750 6350 2750
+Wire Wire Line
+	6300 2650 6350 2650
+Wire Wire Line
+	6300 2550 6350 2550
+Wire Wire Line
+	6300 2450 6350 2450
+Wire Wire Line
+	8100 2850 8150 2850
+Text Label 7850 2200 0    39   ~ 0
+R17->23
+Text Label 6300 2200 0    39   ~ 0
+R9->16
+Text Label 7950 2300 0    39   ~ 0
+220
+Text Label 6400 2300 0    39   ~ 0
+220
+Wire Wire Line
+	5400 2150 5400 1750
+Connection ~ 5400 1750
+Wire Wire Line
+	5400 1750 7100 1750
+Wire Wire Line
+	5700 2950 5700 3050
+Connection ~ 5700 3050
+Connection ~ 5700 5250
+Wire Wire Line
+	5700 5250 7100 5250
+$Comp
+L Interface_Optical:TSOP21xx IR2
+U 1 1 5FDDC872
+P 9700 3650
+F 0 "IR2" H 9233 3608 50  0000 R CNN
+F 1 "TSOP2138" H 9233 3699 50  0000 R CNN
+F 2 "OptoDevice:Vishay_MOLD-3Pin" H 9650 3275 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/82460/tsop45.pdf" H 10350 3950 50  0001 C CNN
+	1    9700 3650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8750 3050 8750 3450
+Wire Wire Line
+	8750 2550 8750 2950
+Connection ~ 8750 2950
+Wire Wire Line
+	8750 2550 9850 2550
+Wire Wire Line
+	7800 3850 9300 3850
+Connection ~ 8750 3450
+Wire Wire Line
+	8750 3450 8750 5250
+Wire Wire Line
+	7350 1750 8950 1750
+Wire Wire Line
+	8750 3450 9300 3450
+$Comp
+L Device:R_Small_US R6
+U 1 1 603CAE32
+P 8950 2950
+F 0 "R6" V 8904 3018 50  0000 L CNN
+F 1 "100" V 8995 3018 50  0000 L CNN
+F 2 "" V 8950 2950 50  0001 C CNN
+F 3 "~" V 8950 2950 50  0001 C CNN
+	1    8950 2950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8950 2850 8950 1750
+Connection ~ 8950 1750
+Wire Wire Line
+	8950 1750 9500 1750
+Wire Wire Line
+	8950 3050 8950 3650
+Wire Wire Line
+	8950 3650 9300 3650
+$Comp
+L Switch:SW_Push B4
+U 1 1 5FED02E9
+P 5400 4750
+F 0 "B4" V 5446 4702 50  0000 R CNN
+F 1 "-" V 5355 4702 50  0000 R CNN
+F 2 "" H 5400 4950 50  0001 C CNN
+F 3 "~" H 5400 4950 50  0001 C CNN
+	1    5400 4750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small_US R2
+U 1 1 60418A5A
+P 4100 4000
+F 0 "R2" V 4146 3932 50  0000 R CNN
+F 1 "10k" V 4055 3932 50  0000 R CNN
+F 2 "" V 4100 4000 50  0001 C CNN
+F 3 "~" V 4100 4000 50  0001 C CNN
+	1    4100 4000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small_US R3
+U 1 1 6041BAAC
+P 4900 4000
+F 0 "R3" V 4946 3932 50  0000 R CNN
+F 1 "10k" V 4855 3932 50  0000 R CNN
+F 2 "" V 4900 4000 50  0001 C CNN
+F 3 "~" V 4900 4000 50  0001 C CNN
+	1    4900 4000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small_US R4
+U 1 1 6041EC40
+P 5400 4000
+F 0 "R4" V 5446 3932 50  0000 R CNN
+F 1 "10k" V 5355 3932 50  0000 R CNN
+F 2 "" V 5400 4000 50  0001 C CNN
+F 3 "~" V 5400 4000 50  0001 C CNN
+	1    5400 4000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5400 4950 5400 5250
+Connection ~ 5400 5250
+Wire Wire Line
+	5400 5250 5700 5250
+Wire Wire Line
+	4900 4950 4900 5250
+Connection ~ 4900 5250
+Wire Wire Line
+	4900 5250 5400 5250
+Wire Wire Line
+	4100 4950 4100 5250
+Connection ~ 4100 5250
+Wire Wire Line
+	4100 5250 4900 5250
+Wire Wire Line
+	3600 4950 3600 5250
+Connection ~ 3600 5250
+Wire Wire Line
+	3600 5250 4100 5250
+Wire Wire Line
+	6400 4450 3600 4450
+Connection ~ 6400 4450
+Connection ~ 3600 4450
+Wire Wire Line
+	3600 4450 3600 4550
+Wire Wire Line
+	5700 3050 5700 3250
+Wire Wire Line
+	6600 4350 4100 4350
+Wire Wire Line
+	4100 4350 4100 4550
+Connection ~ 4100 4350
+Wire Wire Line
+	5400 4150 5400 4550
+Wire Wire Line
+	6600 4250 4900 4250
+Connection ~ 4900 4250
+Wire Wire Line
+	4900 4250 4900 4550
+Wire Wire Line
+	6600 4150 5400 4150
+Wire Wire Line
+	4900 4100 4900 4250
+Wire Wire Line
+	5400 4100 5400 4150
+Connection ~ 5400 4150
+Wire Wire Line
+	4100 4100 4100 4350
+Wire Wire Line
+	3600 4100 3600 4450
+Wire Wire Line
+	5400 3800 5400 3900
+Wire Wire Line
+	4900 3900 4900 3800
+Connection ~ 4900 3800
+Wire Wire Line
+	4900 3800 5400 3800
+Wire Wire Line
+	4100 3900 4100 3800
+Connection ~ 4100 3800
+Wire Wire Line
+	4100 3800 4900 3800
+Wire Wire Line
+	3600 3900 3600 3800
+Connection ~ 3600 3800
+Wire Wire Line
+	3600 3800 4100 3800
+Wire Wire Line
+	5250 3650 6600 3650
+Wire Wire Line
+	5200 3250 5700 3250
+Connection ~ 5700 3250
+Wire Wire Line
+	5700 3250 5700 5250
+Wire Wire Line
+	5400 2350 5400 3450
+Wire Wire Line
+	5400 3450 5200 3450
+Wire Wire Line
+	3500 3800 3500 1750
+Wire Wire Line
+	3500 3800 3600 3800
+Connection ~ 3500 1750
+Wire Wire Line
+	3500 1750 5400 1750
+Wire Wire Line
+	3100 1750 3500 1750
+Wire Wire Line
+	3100 2050 3100 5250
+Wire Wire Line
+	3100 5250 3600 5250
+Wire Wire Line
+	2250 1750 3100 1750
+Connection ~ 3100 1750
+Connection ~ 3100 5250
+Wire Wire Line
+	2250 5250 3100 5250
+Wire Wire Line
+	2250 1950 2250 5250
+Text Label 9600 4000 0    39   ~ 0
+Exit_of_shop
+Text Label 4550 3150 0    39   ~ 0
+Entry_of_shop
+Wire Wire Line
+	7100 5250 7350 5250
+$EndSCHEMATC

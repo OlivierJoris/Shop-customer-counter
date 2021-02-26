@@ -1,0 +1,128 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Visitor counter emiiter"
+Date "2021-02-04"
+Rev "2"
+Comp ""
+Comment1 ""
+Comment2 "JORIS Olivier"
+Comment3 "GOFFART Maxime"
+Comment4 "CRUCIFIX Arnaud"
+$EndDescr
+$Comp
+L Device:C C2
+U 1 1 5FC5EAEF
+P 9800 5800
+F 0 "C2" H 9915 5846 50  0000 L CNN
+F 1 "100nF" H 9915 5755 50  0000 L CNN
+F 2 "" H 9838 5650 50  0001 C CNN
+F 3 "~" H 9800 5800 50  0001 C CNN
+	1    9800 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED:IR204A D1
+U 1 1 5FE36120
+P 10350 5800
+F 0 "D1" V 10346 5720 50  0000 R CNN
+F 1 "TSHF5410" V 10255 5720 50  0000 R CNN
+F 2 "LED_THT:LED_D3.0mm_IRBlack" H 10350 5975 50  0001 C CNN
+F 3 "http://www.everlight.com/file/ProductFile/IR204-A.pdf" H 10300 5800 50  0001 C CNN
+	1    10350 5800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small_US R1
+U 1 1 5FE36126
+P 10250 5650
+F 0 "R1" H 10250 5855 50  0000 C CNN
+F 1 "33" H 10250 5764 50  0000 C CNN
+F 2 "" V 10250 5650 50  0001 C CNN
+F 3 "~" V 10250 5650 50  0001 C CNN
+	1    10250 5650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 5950 9800 6100
+$Comp
+L Diode:1N4149 D1
+U 1 1 601D54C1
+P 8400 5650
+F 0 "D1" H 8400 5867 50  0000 C CNN
+F 1 "1N4149" H 8400 5776 50  0000 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8400 5475 50  0001 C CNN
+F 3 "http://www.microsemi.com/document-portal/doc_view/11580-lds-0239" H 8400 5650 50  0001 C CNN
+	1    8400 5650
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT?
+U 1 1 601D73F2
+P 8000 5850
+F 0 "BT?" H 8118 5946 50  0001 L CNN
+F 1 "9V" H 8118 5900 50  0000 L CNN
+F 2 "" V 8000 5910 50  0001 C CNN
+F 3 "~" V 8000 5910 50  0001 C CNN
+	1    8000 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 5650 8250 5650
+Wire Wire Line
+	8550 5650 8750 5650
+$Comp
+L Device:CP1 C1
+U 1 1 601DA594
+P 8750 5800
+F 0 "C1" H 8865 5846 50  0000 L CNN
+F 1 "10uf" H 8865 5755 50  0000 L CNN
+F 2 "" H 8750 5800 50  0001 C CNN
+F 3 "~" H 8750 5800 50  0001 C CNN
+	1    8750 5800
+	1    0    0    -1  
+$EndComp
+Connection ~ 8750 5650
+Wire Wire Line
+	8750 5650 9050 5650
+Wire Wire Line
+	9650 5650 9800 5650
+Wire Wire Line
+	9800 6100 9350 6100
+Wire Wire Line
+	8000 6100 8000 5950
+Connection ~ 9800 6100
+Wire Wire Line
+	8750 5950 8750 6100
+Connection ~ 8750 6100
+Wire Wire Line
+	8750 6100 8000 6100
+Wire Wire Line
+	9350 5950 9350 6100
+Connection ~ 9350 6100
+Wire Wire Line
+	9350 6100 8750 6100
+$Comp
+L Regulator_Linear:L7805 U1
+U 1 1 601D4E99
+P 9350 5650
+F 0 "U1" H 9350 5892 50  0000 C CNN
+F 1 "L7805CV" H 9350 5801 50  0000 C CNN
+F 2 "" H 9375 5500 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 9350 5600 50  0001 C CNN
+	1    9350 5650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 5650 10150 5650
+Connection ~ 9800 5650
+Wire Wire Line
+	10350 5650 10350 5700
+Wire Wire Line
+	10350 6000 10350 6100
+Wire Wire Line
+	10350 6100 9800 6100
+$EndSCHEMATC
