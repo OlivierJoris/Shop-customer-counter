@@ -188,7 +188,7 @@ digit_plus:
     ;selectedDisplay and current respective value
     
     movlb 00h
-    btfss slected_display, 0	;Check which variable need to be modified
+    btfss selectedDisplay, 0	;Check which variable need to be modified
     goto digit_plus_ten
     goto digit_plus_unit
     
@@ -306,9 +306,74 @@ blinking_right_on:
 
 blinking_end:
     goto clear
-    
+
+someone_leaves:
+    movlb 00h
+    movlw tenDigit
+    subwf limitTenDigit, 0
+    btfsc STATUS, 2 ;check if tenDigit == limitTenDigit
+    goto check_units ;If equal, check for the unit digit
+    goto increment_current_digit ;Else, we can just increment safely
+
+check_units:
+    movlw unitDigit
+    subwf limitUnitDigit, 0 
+    btfsc STATUS, 2 ;check if unitDigit == limitUnitDigit
+    return ;If equal, we return without updating the display 
+
+increment_current_digit:
+    movlw unitDigit
+    sublw 00001001B 
+    btfsc STATUS, 2 ;check if unitDigit = 9 
+    goto increment_ten
+    incf unitDigit, 1 ;increment unitDigit
+    movlw 00000001B	
+    movwf needUpdateDisplay ;the display need to be updated
+    return
+
+increment_ten:
+    movlw tenDigit
+    sublw 00001001B 
+    btfsc STATUS, 2 ;check if tenDigit = 9 
+    return ;can't go up (we are at 99)
+    incf tenDigit, 1
+    clrf unitDigit ;increment ten and reset units
+    movlw 00000001B	
+    movwf needUpdateDisplay ;the display need to be updated
+    return
+
+someone_enters:
+    movlb 00h
+
+decrement_current_digit:
+    movlw unitDigit
+    sublw 00000000B 
+    btfsc STATUS, 2 ;check if unitDigit = 0 
+    goto decrement_ten
+    decf unitDigit, 1 ;decrement unitDigit
+    movlw 00000001B	
+    movwf needUpdateDisplay ;the display need to be updated
+    return
+
+decrement_ten:
+    movlw tenDigit
+    sublw 00000000B 
+    btfsc STATUS, 2 ;check if tenDigit = 0
+    return ;can't go down (we are at 00)
+    decf tenDigit, 1
+    movlw 00001001B	
+    movwf unitDigit ;decrement ten and reset units to 9
+    movlw 00000001B	
+    movwf needUpdateDisplay ;the display need to be updated
+    return
+
 check_barrier:
-    ;Need to be filled
+    movlb 00h
+    btfss PORTD, 1 ;Read RD1 pin
+    call someone_enters ;Pass detected at shop enter
+
+    btfss PORTC, 4 ;Read RC4 pin
+    call someone_leaves ;Pass detected at shop exit
     
     goto clear
 
