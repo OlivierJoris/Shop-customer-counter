@@ -140,7 +140,6 @@ main_loop:
     goto handle_setup
     goto handle_operation
 
-;Maxime
 handle_setup:
     ;Handles the buttons B1->B4 during the selection of the
     ;maximum number of customers
@@ -222,7 +221,7 @@ next_digit_left:
     goto next_digit_end
 next_digit_right:
     movlw 00000001B
-    movwf selectereset_dDisplay
+    movwf selectedDisplay
 next_digit_end:
     return
 
@@ -259,7 +258,6 @@ digit_reset:
 
     return
 
-;Arnaud
 update_display:
     movlb 00h
     movf tenDigit, 0
@@ -291,7 +289,6 @@ timer_interrupt:
     goto blinking_display
     goto check_barrier
 
-;Maxime
 blinking_display:
     ;Makes the selectedDisplay blink during the setup
 
@@ -335,7 +332,6 @@ blinking_right_on:
 blinking_end:
     goto clear
 
-;Olivier
 check_barrier:
     ;Need to be filled
 
