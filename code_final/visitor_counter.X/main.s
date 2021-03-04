@@ -169,14 +169,14 @@ digit_minus:
 digit_minus_ten:		;Update variable for tens
     movlw 00000000B
     subwf limitTenDigit, 0
-    btfss STATUS, 0		;Check if limitTenDigit == 0
+    btfss STATUS, 2		;Check if limitTenDigit == 0
     decf limitTenDigit, 1	;If not, decrement it
     goto digit_minus_end
 
 digit_minus_unit:		;Update variable for units
     movlw 00000000B
     subwf limitUnitDigit, 0
-    btfss STATUS, 0		;Check if limitUnitDigit == 0
+    btfss STATUS, 2		;Check if limitUnitDigit == 0
     decf limitUnitDigit, 1	;If not, decrement it
     goto digit_minus_end
 
@@ -195,13 +195,13 @@ digit_plus:
 digit_plus_ten:			;Update variable for tens
     movf limitTenDigit
     subwf maxDigit, 0
-    btfss STATUS, 0		;Check if limitTenDigit == maxDigit
+    btfss STATUS, 2		;Check if limitTenDigit == maxDigit
     incf limitTenDigit, 1	;If not, increment it
     goto digit_plus_end
 digit_plus_unit:		;Update variable for units
     movf limitUnitDigit
     subwf maxDigit, 0
-    btfss STATUS, 0		;Check if limitUnitDigit == maxDigit
+    btfss STATUS, 2		;Check if limitUnitDigit == maxDigit
     incf limitUnitDigit, 1	;If not, increment it
     goto digit_plus_end
 
@@ -300,7 +300,7 @@ blinking_display:
 blinking_display_left:
     movlw 00000000B
     subwf PORTA, 0
-    btfss STATUS, 0	;Are all outputs = 0?
+    btfss STATUS, 2	;Are all outputs = 0?
     goto blinking_left_off
     goto blinking_left_on
 
@@ -316,7 +316,7 @@ blinking_left_on:
 blinking_display_right:
     movlw 00000000B
     subwf PORTB, 0
-    btfss STATUS, 0
+    btfss STATUS, 2
     goto blinking_right_off
     goto blinking_right_on
 
