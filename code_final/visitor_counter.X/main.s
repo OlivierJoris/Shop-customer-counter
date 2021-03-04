@@ -265,8 +265,46 @@ timer_interrupt:
     goto check_barrier
     
 blinking_display:
-    ;Need to be filled
+    ;Makes the selectedDisplay blink during the setup
     
+    movlb 00h
+    btfss selectedDisplay, 0
+    goto blinking_display_left
+    goto blinking_display_right
+    
+blinking_display_left:
+    movlw 00000000B
+    subwf PORTA, 0
+    btfss STATUS, 0	;Are all outputs = 0?
+    goto blinking_left_off
+    goto blinking_left_on
+    
+blinking_left_off:
+    movlb 02h
+    clrf LATA
+    goto blinking_end
+
+blinking_left_on:
+    call update_setup_display
+    goto blinking_end
+
+blinking_display_right:
+    movlw 00000000B
+    subwf PORTB, 0
+    btfss STATUS, 0
+    goto blinking_right_off
+    goto blinking_right_on
+
+blinking_right_off:
+    movlb 02h
+    clrf LATB
+    goto blinking_end
+    
+blinking_right_on:
+    call update_setup_display
+    goto blinking_end
+
+blinking_end:
     goto clear
     
 check_barrier:
