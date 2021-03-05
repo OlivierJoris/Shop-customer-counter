@@ -238,7 +238,6 @@ update_setup_display:
     movwf PORTB
     return
 
-;Arnaud
 handle_operation:
     movlb 00h
     btfsc PORTE, 3	;Check the reset button
@@ -250,6 +249,7 @@ handle_operation:
     goto main_loop
 
 digit_reset:
+    movlb 00h
     bcf mode, 0     ;Return in setup mode
     clrf tenDigit
     clrf unitDigit
@@ -395,10 +395,10 @@ decrement_ten:
 check_barrier:
     movlb 00h
     btfss PORTD, 1 ;Read RD1 pin
-    call someone_enters ;Pass detected at shop enter
+    call someone_leaves ;Pass detected at shop enter
 
     btfss PORTC, 4 ;Read RC4 pin
-    call someone_leaves ;Pass detected at shop exit
+    call someone_enters ;Pass detected at shop exit
     
     goto clear
 
