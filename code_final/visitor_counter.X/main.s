@@ -125,7 +125,7 @@ initialisation:
     clrf tenDigit
     clrf unitDigit
     clrf needUpdateDisplay
-    movlw 00001010B	;10 in decimal
+    movlw 00001010B	;10 in binary
     movwf maxDigit
 
     ;Start timer 1
@@ -143,20 +143,9 @@ main_loop:
 handle_setup:
     ;Handles the buttons B1->B4 during the selection of the
     ;maximum number of customers
-
-    movlb 00h
-    btfsc PORTE, 0	;Check minus button
-    call digit_minus
-    btfsc PORTE, 1	;Check plus button
-    call digit_plus
-    btfsc PORTE, 2	;Check next digit button
-    call next_digit
-    ;Reset button is not considered because we are
-    ;are already in the setup mode
-    call update_setup_display
-
+    
     goto main_loop
-
+    
 digit_minus:
     ;Decrements limitTenDigit or limitUnitDigit based on
     ;selectedDisplay and current respective value
@@ -207,21 +196,22 @@ digit_plus_unit:		;Update variable for units
 
 digit_plus_end:
     return
-
+    
 next_digit:
     ;Modifies which of the 2 7-segments is going
     ;to be modified
 
     movlb 00h
-    btfsc selectedDisplay, 0
-    goto next_digit_left
+    btfss selectedDisplay, 0
     goto next_digit_right
-next_digit_left:
-    clrf selectedDisplay
-    goto next_digit_end
+    goto switch_mode
 next_digit_right:
     movlw 00000001B
     movwf selectedDisplay
+    goto next_digit_end
+switch_mode:
+    movlw 00000001B
+    movwf mode
 next_digit_end:
     return
 
@@ -270,7 +260,7 @@ update_display:
 
     bcf needUpdateDisplay, 0
 
-    return ;Leave return instead of goto ...
+    return
 
 interrupt_routine:
     movlb 00h
@@ -286,50 +276,20 @@ timer_interrupt:
     movwf TMR1L     ;Reset register
 
     btfss mode, 0
-    goto blinking_display
+    goto setup
     goto check_barrier
-
-blinking_display:
-    ;Makes the selectedDisplay blink during the setup
-
+    
+setup:
     movlb 00h
-    btfss selectedDisplay, 0
-    goto blinking_display_left
-    goto blinking_display_right
-
-blinking_display_left:
-    movlw 00000000B
-    subwf PORTA, 0
-    btfss STATUS, 2	;Are all outputs = 0?
-    goto blinking_left_off
-    goto blinking_left_on
-
-blinking_left_off:
-    movlb 02h
-    clrf LATA
-    goto blinking_end
-
-blinking_left_on:
+    btfsc PORTE, 0	;Check minus button
+    call digit_minus
+    btfsc PORTE, 1	;Check plus button
+    call digit_plus
+    btfsc PORTE, 2	;Check next digit button
+    call next_digit
+    ;Reset button is not considered because we are
+    ;are already in the setup mode
     call update_setup_display
-    goto blinking_end
-
-blinking_display_right:
-    movlw 00000000B
-    subwf PORTB, 0
-    btfss STATUS, 2
-    goto blinking_right_off
-    goto blinking_right_on
-
-blinking_right_off:
-    movlb 02h
-    clrf LATB
-    goto blinking_end
-
-blinking_right_on:
-    call update_setup_display
-    goto blinking_end
-
-blinking_end:
     goto clear
 
 someone_leaves:

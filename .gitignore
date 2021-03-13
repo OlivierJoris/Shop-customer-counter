@@ -1,2 +1,4 @@
 *.DS_Store
 *.vscode
+/code_final/visitor_counter.X/build/
+/code_final/visitor_counter.X/dist/

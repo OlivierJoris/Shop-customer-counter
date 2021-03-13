@@ -4,22 +4,19 @@
 ; ************************************************************* ;
 ; .:ACTUATORS:. ;
 ; ;
-; Display a 1 to 99 number on the 7-segments with ;
-; a 0.25 seconds delay before refreshing a new number. ;
+; Display 0 to 9 on each 7-segments with a delay between ;
+; each digit. ;
 ; ;
 ; Idea: ;
 ; ===== ;
-; -> There is a counter to store the current number of the ;
+; -> There is a counter to store the current digit of the ;
 ; 7-segments. ;
 ; -> There is a maxcounter to determine the maximum value ;
 ; the counter can reach (10 for the moment). ;
 ; -> The counter takes its corresponding digit ;
-; representation in the array : one for the first ;
-; 7-segment and one for the second 7-segment. ;
+; representation in the array ;
 ; -> When the counter is too high (counter=maxcounter), ;
-; he is being reset to 0. ;
-; -> The 7-segments display a new digit every 250ms ;
-; (with a 4MHz frequency) ;
+; it is being reset to 0. ;
 ; ************************************************************* ;
 
     processor 16f1789
@@ -10335,7 +10332,7 @@ ENDM
   CONFIG BORV = LO ; Brown-out Reset Voltage Selection (Brown-out Reset Voltage (Vbor), low trip point selected.)
   CONFIG LPBOR = OFF ; Low Power Brown-Out Reset Enable Bit (Low power brown-out is disabled)
   CONFIG LVP = OFF ; Low-Voltage Programming Enable (High-voltage on MCLR/VPP must be used for programming)
-# 24 "actuators.s" 2
+# 21 "actuators.s" 2
 
     PSECT text, abs, class=CODE, delta=2
 
@@ -10392,7 +10389,7 @@ initialisation:
     clrf TMR1L
     bcf PIR1, 0 ;((PIR1) and 07Fh), 0 = 0
 
-    ;Timer1 ON using a 1:4 prescaler (250 000/4)
+    ;Timer1 ON using a 1:8 prescaler
     movlb 00h
     movlw 00110001B ;(p.217 in datasheet)
     movwf T1CON ;configure Timer1
@@ -10404,7 +10401,7 @@ initialisation:
     movlw 11000000B
     movwf INTCON ;Enable interrupt
 
-    ;Trigger an interrupt after 250 ms (65535 - [4000000*0.25/4²])
+    ;Trigger an interrupt
     movlb 00h
     movlw 00001011B ;the 8 most significant bits
     movwf TMR1H
@@ -10428,7 +10425,7 @@ main_loop:
 
 interrupt_routine:
     movlb 00h
-    btfss PIR1, 0 ;Timer1 Overflow Interrupt Flag bit ((PIR1) and 07Fh), 0
+    btfss PIR1, 0 ;timer1 overflow interrupt flag bit ((PIR1) and 07Fh), 0
     RETFIE
 
 timer_interrupt:
@@ -10438,11 +10435,9 @@ timer_interrupt:
     movwf TMR1H ;reset register
     movlw 11011011B
     movwf TMR1L ;reset register
-    ;bsf T1CON, 0 ;set the first bit to 1
 
 increment_on:
     call array ;fetch the number in w based on the counter index
-    ;movlw 00111111B
     movlb 00h
     movwf PORTA ;pins of the first 7-segment go high based on the number fetched
     movwf PORTB ;pins of the second 7-segment go high based on the number fetched
@@ -10454,6 +10449,6 @@ increment_on:
 
 clear:
     movlb 00h
-    bcf PIR1, 0
-    bsf T1CON, 0 ;set the first bit to 1
+    bcf PIR1, 0 ;clear timer1 interrupt
+    bsf T1CON, 0 ;timer1 on
     RETFIE
