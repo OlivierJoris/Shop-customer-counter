@@ -88,7 +88,7 @@ initialisation:
     clrf TMR1L
     bcf PIR1, 0		;TMR1IF = 0
 
-    ;Timer1 OFF using a 1:8 prescaler /* !! VALUES MIGHT NEED TO BE UPDATED */
+    ;Timer1 OFF using a 1:8 prescaler
     movlb 00h
     movlw 00110000B	;(p.217 in datasheet)
     movwf T1CON		;Configure Timer1
@@ -143,6 +143,7 @@ main_loop:
 handle_setup:
     ;Handles the buttons B1->B4 during the selection of the
     ;maximum number of customers
+    bsf PORTD, 7
     
     goto main_loop
     
@@ -230,8 +231,9 @@ update_setup_display:
 
 handle_operation:
     movlb 00h
-    btfsc PORTE, 3	;Check the reset button
-    call digit_reset
+    bcf PORTD, 7
+    ;btfsc PORTE, 3	;Check the reset button
+    ;call digit_reset
 
     btfsc needUpdateDisplay, 0
     call update_display
