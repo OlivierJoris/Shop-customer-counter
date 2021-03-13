@@ -125,7 +125,7 @@ initialisation:
     clrf tenDigit
     clrf unitDigit
     clrf needUpdateDisplay
-    movlw 00001010B	;10 in binary
+    movlw 00001001B	;9 in binary
     movwf maxDigit
 
     ;Start timer 1
@@ -211,6 +211,10 @@ next_digit_right:
     movwf selectedDisplay
     goto next_digit_end
 switch_mode:
+    movf limitTenDigit, 0
+    movwf tenDigit
+    movf limitUnitDigit, 0
+    movwf unitDigit
     movlw 00000001B
     movwf mode
 next_digit_end:
@@ -296,20 +300,20 @@ setup:
 
 someone_leaves:
     movlb 00h
-    movlw tenDigit
+    movf tenDigit, 0
     subwf limitTenDigit, 0
     btfsc STATUS, 2 ;check if tenDigit == limitTenDigit
     goto check_units ;If equal, check for the unit digit
     goto increment_current_digit ;Else, we can just increment safely
 
 check_units:
-    movlw unitDigit
+    movf unitDigit, 0
     subwf limitUnitDigit, 0 
     btfsc STATUS, 2 ;check if unitDigit == limitUnitDigit
     return ;If equal, we return without updating the display 
 
 increment_current_digit:
-    movlw unitDigit
+    movf unitDigit, 0
     sublw 00001001B 
     btfsc STATUS, 2 ;check if unitDigit = 9 
     goto increment_ten
@@ -319,7 +323,7 @@ increment_current_digit:
     return
 
 increment_ten:
-    movlw tenDigit
+    movf tenDigit, 0
     sublw 00001001B 
     btfsc STATUS, 2 ;check if tenDigit = 9 
     return ;can't go up (we are at 99)
@@ -333,7 +337,7 @@ someone_enters:
     movlb 00h
 
 decrement_current_digit:
-    movlw unitDigit
+    movf unitDigit, 0
     sublw 00000000B 
     btfsc STATUS, 2 ;check if unitDigit = 0 
     goto decrement_ten
@@ -343,7 +347,7 @@ decrement_current_digit:
     return
 
 decrement_ten:
-    movlw tenDigit
+    movf tenDigit, 0
     sublw 00000000B 
     btfsc STATUS, 2 ;check if tenDigit = 0
     return ;can't go down (we are at 00)
