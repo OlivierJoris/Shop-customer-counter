@@ -50,8 +50,8 @@ initialisation:
     movwf TRISC		;RC4 is input
 
     ;Phototransistor Q2 + Diode D1
-    movlw 00000010B	;Set the port pin types of RD
-    movwf TRISD		;RD1 is input
+    movlw 00000011B	;Set the port pin types of RD
+    movwf TRISD		;RD0 & RD1 is input
 
     ;Buttons B1->B4
     movlw 00001111B	;Set the port pin types of the RE
@@ -236,8 +236,8 @@ update_setup_display:
 handle_operation:
     movlb 00h
     bcf PORTD, 7
-    ;btfsc PORTE, 3	;Check the reset button
-    ;call digit_reset
+    btfsc PORTD, 0	;Check the reset button
+    call digit_reset
 
     btfsc needUpdateDisplay, 0
     call update_display

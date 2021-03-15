@@ -1,0 +1,76 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Visitor counter"
+Date "2020-12-01"
+Rev "1"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 "Crucifix Arnaud, Goffart Maxime, Joris Olivier"
+$EndDescr
+$Comp
+L Connector:Jack-DC RAPC722X
+U 1 1 5FC4D66D
+P 5500 3650
+F 0 "RAPC722X" H 5557 3975 50  0000 C CNN
+F 1 "5V" H 5557 3884 50  0000 C CNN
+F 2 "" H 5550 3610 50  0001 C CNN
+F 3 "~" H 5550 3610 50  0001 C CNN
+	1    5500 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 5FC5EAEF
+P 6150 3700
+F 0 "C1" H 6265 3746 50  0000 L CNN
+F 1 "100nF" H 6265 3655 50  0000 L CNN
+F 2 "" H 6188 3550 50  0001 C CNN
+F 3 "~" H 6150 3700 50  0001 C CNN
+	1    6150 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 3550 6150 3550
+$Comp
+L LED:IR204A D1
+U 1 1 5FE36120
+P 7150 3800
+F 0 "D1" V 7146 3720 50  0000 R CNN
+F 1 "TSHF5410" V 7055 3720 50  0000 R CNN
+F 2 "LED_THT:LED_D3.0mm_IRBlack" H 7150 3975 50  0001 C CNN
+F 3 "http://www.everlight.com/file/ProductFile/IR204-A.pdf" H 7100 3800 50  0001 C CNN
+	1    7150 3800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small_US R1
+U 1 1 5FE36126
+P 7050 3550
+F 0 "R1" H 7050 3755 50  0000 C CNN
+F 1 "33" H 7050 3664 50  0000 C CNN
+F 2 "" V 7050 3550 50  0001 C CNN
+F 3 "~" V 7050 3550 50  0001 C CNN
+	1    7050 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 3550 6950 3550
+Connection ~ 6150 3550
+Wire Wire Line
+	7150 3550 7150 3700
+Wire Wire Line
+	7150 4000 6150 4000
+Wire Wire Line
+	5800 4000 5800 3750
+Wire Wire Line
+	6150 3850 6150 4000
+Connection ~ 6150 4000
+Wire Wire Line
+	6150 4000 5800 4000
+$EndSCHEMATC
