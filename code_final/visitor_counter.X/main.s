@@ -127,6 +127,7 @@ initialisation:
     clrf needUpdateDisplay
     movlw 00001001B	;9 in binary
     movwf maxDigit
+    call update_setup_display
 
     ;Start timer 1
     movlb 00h
@@ -145,6 +146,9 @@ handle_setup:
     ;maximum number of customers
     bsf PORTD, 7
     
+    btfsc needUpdateDisplay, 0
+    call update_setup_display
+    
     goto main_loop
     
 digit_minus:
@@ -160,15 +164,22 @@ digit_minus_ten:		;Update variable for tens
     movlw 00000000B
     subwf limitTenDigit, 0
     btfss STATUS, 2		;Check if limitTenDigit == 0
+    goto digit_minus_ten_dec
+    goto digit_minus_end
+digit_minus_ten_dec:
     decf limitTenDigit, 1	;If not, decrement it
+    bsf needUpdateDisplay, 0
     goto digit_minus_end
 
 digit_minus_unit:		;Update variable for units
     movlw 00000000B
     subwf limitUnitDigit, 0
     btfss STATUS, 2		;Check if limitUnitDigit == 0
-    decf limitUnitDigit, 1	;If not, decrement it
+    goto digit_minus_unit_dec
     goto digit_minus_end
+digit_minus_unit_dec:
+    decf limitUnitDigit, 1	;If not, decrement it
+    bsf needUpdateDisplay, 0
 
 digit_minus_end:
     return
@@ -186,14 +197,22 @@ digit_plus_ten:			;Update variable for tens
     movf limitTenDigit
     subwf maxDigit, 0
     btfss STATUS, 2		;Check if limitTenDigit == maxDigit
-    incf limitTenDigit, 1	;If not, increment it
+    goto digit_plus_ten_inc
     goto digit_plus_end
+digit_plus_ten_inc:
+    incf limitTenDigit, 1	;If not, increment it
+    bsf needUpdateDisplay, 0
+    goto digit_plus_end
+
 digit_plus_unit:		;Update variable for units
     movf limitUnitDigit
     subwf maxDigit, 0
     btfss STATUS, 2		;Check if limitUnitDigit == maxDigit
-    incf limitUnitDigit, 1	;If not, increment it
+    goto digit_plus_unit_inc
     goto digit_plus_end
+digit_plus_unit_inc:
+    incf limitUnitDigit, 1	;If not, increment it
+    bsf needUpdateDisplay, 0
 
 digit_plus_end:
     return
@@ -224,6 +243,7 @@ update_setup_display:
     ;Updates the 7-segments during the setup phase
 
     movlb 00h
+    bcf needUpdateDisplay, 0
     movf limitTenDigit, 0
     call array
     movwf PORTA
@@ -249,8 +269,8 @@ digit_reset:
     bcf mode, 0     ;Return in setup mode
     clrf tenDigit
     clrf unitDigit
-
-    call update_display ;Display 0 on both 7-segments
+    clrf selectedDisplay
+    call update_setup_display ;Display last values of setup
 
     return
 
@@ -295,7 +315,6 @@ setup:
     call next_digit
     ;Reset button is not considered because we are
     ;are already in the setup mode
-    call update_setup_display
     goto clear
 
 someone_leaves:
