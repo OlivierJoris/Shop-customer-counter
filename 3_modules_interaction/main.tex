@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\usepackage{bbold}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+
+\usepackage{url}
+
+\begin{document}
+
+\title{\Large{INFO-2055: Embedded systems project\\Customer Counter - System modules interaction}}
+\vspace{1cm}
+\author{\small{\bf Crucifix Arnaud - 170962} \\ \small{\bf Goffart Maxime - 180521} \\ \small{\bf Joris Olivier - 182113}}
+\date{}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Modules interaction}
+\paragraph{}We build both types (emitter and receiver) circuits using breadboards.
+\paragraph{}The issues we have are the following:
+\begin{enumerate}
+    \item Phototransistors and IR emitters have a range which is too short.
+    \item If we are not almost in the dark, the phototransistor does not allow to detect the waves from the IR emitter.
+\end{enumerate}
+\paragraph{}For both issues, we think that it comes from hardware choices. Maybe we do not have the ideal components for what we want to achieve. At the moment, we are using \href{https://be.farnell.com/vishay/tshf5410/emetteur-infrarouge-890nm-t-1/dp/1652534?gclid=Cj0KCQjwrsGCBhD1ARIsALILBYrUKN4GryFp_Vp_vzQ5O_W0PcuBohulg6OxR3ZDBh-9AeUAS_I4SR0aAvQ2EALw_wcB&mckv=s0CeFi390_dc|pcrid|353465811553|kword|tshf5410|match|p|plid||slid||product||pgrid|12806565027|ptaid|kwd-5961707377|&CMP=KNC-GBE-GEN-FRE-SKU-G12-VISHAY-OPT}{Vishay TSHF5410} as IR emitters and \href{https://be.farnell.com/tt-electronics-optek-technology/op598a/phototransistor-plastic-to-18/dp/1497887?st=op598a}{OP598A} as phototransistors.
+
+\end{document}
