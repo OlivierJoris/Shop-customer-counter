@@ -1,0 +1,30 @@
+﻿Description;Reference;Quantity;Usage;On the schematic
+MCU;;1;Controls the circuit;MCU1
+IR receivers;;2;Detect IR signals;U4, U5
+7 segments;;2;Indicate number of people that can still enter;U2, U3
+Voltage regulator;;1;Regulates tension from 9V to 5V;U1
+Header;;1;Used to connect the PicKit3;H1
+Buttons;;4;Used to set the number of people that can enter the shop;B1->B4
+Diode;;1;Prevents destroying the cirucit if the battery is put the wrong way;D1
+Green LED;;1;Indicates status of the receiving circuit;D2
+100 Ohm;;2;Resistors for the IR emitters;R20, R21
+220 Ohm;;15;Resistors for the different LEDs (7 segments & green LED);R5->R18, R22
+10 kOhm;;5;Resistors for buttons and connection to the PIC;R1->R4, R19
+100nF;;2;Decupling capacitors for the MCU;C3, C4
+10uF;;1;Used with the tension regulator to have a clean signal;C2
+100uF;;1;Used with the tension regulator to have a clean signal;C1
+9V battery holder;;1;Used to connect the battery to the circuit;/
+9V battery;;1;Power the circuit;/
+Big prototype board;;1;To hold all the components of the circuit;/
+Cable;;x;Used to connect everything together;/
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;

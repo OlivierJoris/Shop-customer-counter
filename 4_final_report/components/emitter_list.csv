@@ -1,0 +1,29 @@
+﻿Description;Reference;Quantity;Usage;On the schematic
+IR emitters;;2;Produce IR signals;D4
+Timer 555;;2;Generate 38kHz signals for emitters;U6
+Diode;;2;Prevent destroying the cirucits if the batteries are put the wrong way;D3
+470 Ohm;;2;Resistors for IR emitters;R25
+1k Ohm;;2;Used with the timers to get a frequency of 38kHz;R23
+20k Ohm;;2;Used with the timers to get a frequency of 38kHz;R24
+1nF;;2;Used with the timers to get a frequency of 38kHz;C7
+0,01uF;;2;Used with the timers to get a frequency of 38kHz;C6
+100uF;;2;Used to have a clean input signal;C5
+9V battery holders;;2;Used to connect the batteries to the circuits;/
+9V batteries;;2;Power the circuits;/
+Small prototype boards;;2;To hold all the components of the circuits;/
+Cable;;x;Used to connect everything together;/
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
+;;;;
