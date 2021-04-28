@@ -4,122 +4,197 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title "Visitor counter emiiter"
-Date "2021-02-04"
-Rev "2"
-Comp ""
-Comment1 ""
+Title "Visitor Counter Emitter"
+Date "28-04-2021"
+Rev "3"
+Comp "INFO-2055: Embedded Systems Project"
+Comment1 "Academic Year: 2020-2021"
 Comment2 "JORIS Olivier"
 Comment3 "GOFFART Maxime"
 Comment4 "CRUCIFIX Arnaud"
 $EndDescr
 $Comp
-L LED:IR204A D1
+L LED:IR204A D4
 U 1 1 5FE36120
-P 10350 5800
-F 0 "D1" V 10346 5720 50  0000 R CNN
-F 1 "TSHF5410" V 10255 5720 50  0000 R CNN
-F 2 "LED_THT:LED_D3.0mm_IRBlack" H 10350 5975 50  0001 C CNN
-F 3 "http://www.everlight.com/file/ProductFile/IR204-A.pdf" H 10300 5800 50  0001 C CNN
-	1    10350 5800
+P 10450 5450
+F 0 "D4" V 10446 5370 50  0000 R CNN
+F 1 "TSHG8200" V 10355 5370 50  0000 R CNN
+F 2 "LED_THT:LED_D3.0mm_IRBlack" H 10450 5625 50  0001 C CNN
+F 3 "http://www.everlight.com/file/ProductFile/IR204-A.pdf" H 10400 5450 50  0001 C CNN
+	1    10450 5450
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Device:R_Small_US R1
+L Device:R_Small_US R25
 U 1 1 5FE36126
-P 10250 5650
-F 0 "R1" H 10250 5855 50  0000 C CNN
-F 1 "33" H 10250 5764 50  0000 C CNN
-F 2 "" V 10250 5650 50  0001 C CNN
-F 3 "~" V 10250 5650 50  0001 C CNN
-	1    10250 5650
+P 10350 5200
+F 0 "R25" H 10350 5405 50  0000 C CNN
+F 1 "470" H 10350 5314 50  0000 C CNN
+F 2 "" V 10350 5200 50  0001 C CNN
+F 3 "~" V 10350 5200 50  0001 C CNN
+	1    10350 5200
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9800 5950 9800 6100
 $Comp
-L Diode:1N4149 D1
+L Diode:1N4149 D3
 U 1 1 601D54C1
-P 8400 5650
-F 0 "D1" H 8400 5867 50  0000 C CNN
-F 1 "1N4149" H 8400 5776 50  0000 C CNN
-F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 8400 5475 50  0001 C CNN
-F 3 "http://www.microsemi.com/document-portal/doc_view/11580-lds-0239" H 8400 5650 50  0001 C CNN
-	1    8400 5650
+P 7500 4700
+F 0 "D3" H 7500 4917 50  0000 C CNN
+F 1 "1N4149" H 7500 4826 50  0000 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 7500 4525 50  0001 C CNN
+F 3 "http://www.microsemi.com/document-portal/doc_view/11580-lds-0239" H 7500 4700 50  0001 C CNN
+	1    7500 4700
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:Battery_Cell BT?
 U 1 1 601D73F2
-P 8000 5850
-F 0 "BT?" H 8118 5946 50  0001 L CNN
-F 1 "9V" H 8118 5900 50  0000 L CNN
-F 2 "" V 8000 5910 50  0001 C CNN
-F 3 "~" V 8000 5910 50  0001 C CNN
-	1    8000 5850
+P 7350 5050
+F 0 "BT?" H 7468 5146 50  0001 L CNN
+F 1 "9V" H 7468 5100 50  0000 L CNN
+F 2 "" V 7350 5110 50  0001 C CNN
+F 3 "~" V 7350 5110 50  0001 C CNN
+	1    7350 5050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8000 5650 8250 5650
-Wire Wire Line
-	8550 5650 8750 5650
+	7650 4700 7850 4700
 $Comp
-L Device:CP1 C1
+L Device:CP1 C5
 U 1 1 601DA594
-P 8750 5800
-F 0 "C1" H 8865 5846 50  0000 L CNN
-F 1 "100uf" H 8865 5755 50  0000 L CNN
-F 2 "" H 8750 5800 50  0001 C CNN
-F 3 "~" H 8750 5800 50  0001 C CNN
-	1    8750 5800
+P 7850 4850
+F 0 "C5" H 7965 4896 50  0000 L CNN
+F 1 "100uf" H 7965 4805 50  0000 L CNN
+F 2 "" H 7850 4850 50  0001 C CNN
+F 3 "~" H 7850 4850 50  0001 C CNN
+	1    7850 4850
 	1    0    0    -1  
 $EndComp
-Connection ~ 8750 5650
 Wire Wire Line
-	8750 5650 9050 5650
+	8850 5600 8700 5600
 Wire Wire Line
-	9800 6100 9350 6100
-Wire Wire Line
-	8000 6100 8000 5950
-Connection ~ 9800 6100
-Wire Wire Line
-	8750 5950 8750 6100
-Connection ~ 8750 6100
-Wire Wire Line
-	8750 6100 8000 6100
-Wire Wire Line
-	9350 5950 9350 6100
-Connection ~ 9350 6100
-Wire Wire Line
-	9350 6100 8750 6100
+	10450 5200 10450 5350
 $Comp
-L Regulator_Linear:L7805 U1
-U 1 1 601D4E99
-P 9350 5650
-F 0 "U1" H 9350 5892 50  0000 C CNN
-F 1 "L7805CV" H 9350 5801 50  0000 C CNN
-F 2 "" H 9375 5500 50  0001 L CIN
-F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 9350 5600 50  0001 C CNN
-	1    9350 5650
+L Device:R_Small_US R23
+U 1 1 608A2E48
+P 9750 4700
+F 0 "R23" H 9750 4905 50  0000 C CNN
+F 1 "1k" H 9750 4814 50  0000 C CNN
+F 2 "" V 9750 4700 50  0001 C CNN
+F 3 "~" V 9750 4700 50  0001 C CNN
+	1    9750 4700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10350 5650 10350 5700
+	7350 4700 7350 4850
 Wire Wire Line
-	10350 6000 10350 6100
+	8700 4700 9350 4700
 Wire Wire Line
-	10350 6100 9800 6100
+	9650 4700 9350 4700
+Connection ~ 9350 4700
 Wire Wire Line
-	9650 5650 10150 5650
+	9850 4700 9950 4700
+Wire Wire Line
+	9950 5400 9850 5400
+Connection ~ 9950 5400
 $Comp
-L Device:CP1 C2
-U 1 1 602A9A75
-P 9800 5800
-F 0 "C2" H 9915 5846 50  0000 L CNN
-F 1 "10uf" H 9915 5755 50  0000 L CNN
-F 2 "" H 9800 5800 50  0001 C CNN
-F 3 "~" H 9800 5800 50  0001 C CNN
-	1    9800 5800
+L Device:R_Small_US R24
+U 1 1 608A8837
+P 9950 5500
+F 0 "R24" H 9950 5705 50  0000 C CNN
+F 1 "20k" H 9950 5614 50  0000 C CNN
+F 2 "" V 9950 5500 50  0001 C CNN
+F 3 "~" V 9950 5500 50  0001 C CNN
+	1    9950 5500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9850 5600 9950 5600
+Wire Wire Line
+	9850 5200 10250 5200
+Wire Wire Line
+	8700 4700 8700 5600
+Wire Wire Line
+	9350 4700 9350 5000
+Wire Wire Line
+	9950 4700 9950 5400
+Connection ~ 7850 4700
+Wire Wire Line
+	7850 4700 8700 4700
+Connection ~ 8700 4700
+$Comp
+L Timer:TLC555xP U6
+U 1 1 60896685
+P 9350 5400
+F 0 "U6" H 9350 5981 50  0000 C CNN
+F 1 "TLC555IP" H 9350 5890 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 10000 5000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tlc555.pdf" H 10200 5000 50  0001 C CNN
+	1    9350 5400
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:C_Small C7
+U 1 1 608BCDBE
+P 8600 6100
+F 0 "C7" H 8692 6146 50  0000 L CNN
+F 1 "1nF" H 8692 6055 50  0000 L CNN
+F 2 "" H 8600 6100 50  0001 C CNN
+F 3 "~" H 8600 6100 50  0001 C CNN
+	1    8600 6100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C6
+U 1 1 608B0E3A
+P 8150 6100
+F 0 "C6" H 8242 6146 50  0000 L CNN
+F 1 "0,01uF" H 8242 6055 50  0000 L CNN
+F 2 "" H 8150 6100 50  0001 C CNN
+F 3 "~" H 8150 6100 50  0001 C CNN
+	1    8150 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9950 5600 9950 5900
+Connection ~ 9950 5600
+Wire Wire Line
+	7850 5000 7850 6250
+Wire Wire Line
+	7350 5150 7350 6250
+Wire Wire Line
+	9350 5800 9350 6250
+Wire Wire Line
+	10450 6250 9350 6250
+Wire Wire Line
+	10450 5650 10450 6250
+Connection ~ 7850 6250
+Wire Wire Line
+	7850 6250 7350 6250
+Connection ~ 9350 6250
+Wire Wire Line
+	8850 5200 8600 5200
+Wire Wire Line
+	8600 5200 8600 5900
+Wire Wire Line
+	9950 5900 8600 5900
+Connection ~ 8600 5900
+Wire Wire Line
+	8600 5900 8600 6000
+Wire Wire Line
+	7850 6250 8150 6250
+Wire Wire Line
+	8850 5400 8150 5400
+Wire Wire Line
+	8150 5400 8150 6000
+Wire Wire Line
+	8150 6200 8150 6250
+Connection ~ 8150 6250
+Wire Wire Line
+	8150 6250 8600 6250
+Wire Wire Line
+	8600 6200 8600 6250
+Connection ~ 8600 6250
+Wire Wire Line
+	8600 6250 9350 6250
 $EndSCHEMATC
