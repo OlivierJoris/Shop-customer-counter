@@ -118,7 +118,7 @@ initialisation:
     movwf TMR1L
 
     ;Variables
-    mode		        EQU 20h     ;0 -> choosing limit | 1 -> operating
+    mode		        EQU 20h     ;0 -> config | 1 -> operating
     selectedDisplay	    EQU 21h	    ;Current display being modified
     limitTenDigit	    EQU 22h	    ;Ten limit chosen during setup
     limitUnitDigit	    EQU 23h	    ;Unit limit chosen during setup
