@@ -417,10 +417,10 @@ setup:
 ;Handles interrupt when in operating mode
 check_barrier:
     movlb 00h
-    btfss PORTD, 1      ;Reads RD1 pin
+    btfsc PORTD, 1      ;Reads RD1 pin
     call someone_leaves ;Pass detected at shop exit
 
-    btfss PORTC, 4      ;Reads RC4 pin
+    btfsc PORTC, 4      ;Reads RC4 pin
     call someone_enters ;Pass detected at shop entry
     
     goto clear
