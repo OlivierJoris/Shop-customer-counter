@@ -2,7 +2,7 @@
 IR emitters;;2;Produce IR signals;D4
 Timer 555;;2;Generate 38kHz signals for emitters;U6
 Diode;;2;Prevent destroying the cirucits if the batteries are put the wrong way;D3
-470 Ohm;;2;Resistors for IR emitters;R25
+68 Ohm;;2;Resistors for IR emitters;R25
 1k Ohm;;2;Used with the timers to get a frequency of 38kHz;R23
 20k Ohm;;2;Used with the timers to get a frequency of 38kHz;R24
 1nF;;2;Used with the timers to get a frequency of 38kHz;C7
