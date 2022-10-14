@@ -1,10 +1,2 @@
-# Customer Counter
-INFO-2055-embedded systems project: Customer counter
-
-
-## Links
-* Hardware & Software: [Overleaf](https://www.overleaf.com/8364532749gqnjtjmrzdpj)
-* Sensors & Actuators: [Overleaf](https://www.overleaf.com/8889989746bwvtgvvdffww)
-* Code structure: [Overleaf](https://www.overleaf.com/6229132484wqnyhkkhfydb)
-* Modules interaction: [Overleaf](https://www.overleaf.com/7684867541mcrkchrskchh)
-* Final report: [Overleaf](https://www.overleaf.com/4448968811cpdgzpdfyzwp)
+# Shop customer counter
+Shop customer counter made using a PIC microcontroller in Assembly. This project has been realized as part of the *Embedded systems project* course given by Bernard Boigelot at the University of Liège during the 2020-2021 academic year.
